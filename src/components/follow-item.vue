@@ -17,7 +17,13 @@
                         {{ contact.nickname }}
                     </router-link>
                 </span>
-                 <span class="username-wrap"> @{{ contact.username }} </span>      
+                 <span class="username-wrap"> @{{ contact.username }} </span>
+                 <span class="username-wrap">
+                          <n-tag type="success">
+                              Lv.XXX
+                          </n-tag>
+                    </span>
+<!--              TODO:完成经验显示-->
                 <n-tag
                     v-if="contact.is_following"
                     class="top-tag" type="success" size="small" round>
@@ -30,6 +36,7 @@
                      <span class="info-item">
                         {{ formatDate(contact.created_on) }}&nbsp;加入
                     </span>
+
                 </div>
             </template>
             <template #header-extra>

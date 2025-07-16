@@ -30,6 +30,12 @@
                      <span class="info-item">
                         {{ formatDate(contact.created_on) }}&nbsp;加入
                     </span>
+                  <span class="username-wrap">
+                          <n-tag type="success">
+                              Lv.XXX
+                          </n-tag>
+                    </span>
+<!--                  TODO:完成经验显示-->
                 </div>
             </template>
             <template #header-extra>

@@ -20,6 +20,10 @@
                         <n-tag v-if="store.state.userInfo.is_admin" class="top-tag" type="error" size="small" round>
                             管理员
                         </n-tag>
+                      <n-tag type="success">
+                        Lv.x
+                      </n-tag>
+<!--                      TODO:完成经验显示-->
                     </div>
                     <div class="userinfo">
                         <span class="info-item">UID. {{ store.state.userInfo.id }} </span>

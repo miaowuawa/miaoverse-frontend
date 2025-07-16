@@ -139,6 +139,7 @@
                             circle
                             type="primary"
                             @click.stop="switchLink"
+                            color="#8a2be2"
                         >
                             <template #icon>
                                 <n-icon size="20" color="var(--primary-color)">
@@ -153,6 +154,7 @@
                             circle
                             type="primary"
                             @click.stop="switchEye"
+                            color=button_color
                         >
                             <template #icon>
                                 <n-icon size="20" color="var(--primary-color)">
@@ -182,6 +184,7 @@
                             type="primary"
                             secondary
                             round
+                            color="#8a2be2"
                         >
                             发布
                         </n-button>
@@ -256,6 +259,7 @@
                     round
                     type="primary"
                     @click="triggerAuth('signin')"
+                    color="#8a2be2"
                 >
                     登录
                 </n-button>
@@ -286,6 +290,7 @@ import {
   CompassOutline,
   EyeOutline,
 } from '@vicons/ionicons5';
+
 import { createPost } from '@/api/post';
 import { parsePostTag } from '@/utils/content';
 import { isZipFile } from '@/utils/isZipFile';
