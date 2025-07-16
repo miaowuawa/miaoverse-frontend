@@ -1,6 +1,14 @@
 :root {
     // 如果要变更中间栏的大小，修改此处即可
     --content-main: 620px;
+    // 主题色 - 紫色系
+    --primary-color: #722ed1;
+    --primary-color-hover: #8d2ed1;
+    --primary-color-pressed: #5a1da8;
+    --primary-color-suppl: #8d2ed1;
+    --primary-hover: #8d2ed1;
+    // 强调色
+    --accent-color: #2ed172;
 }
 
 .app-container {
@@ -45,7 +53,6 @@
 
 .following-link {
     color: #000;
-    color: none;
     text-decoration: none;
     cursor: pointer;
     opacity: 0.75;
@@ -60,18 +67,19 @@
     cursor: pointer;
 
     &:hover {
-        color: #18a058;
+        color: var(--primary-color);
         opacity: 0.8;
     }
 }
 
 .hash-link,
 .user-link {
-    color: #18a058;
+    color: var(--primary-color);
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
+        color: var(--primary-hover);
         opacity: 0.8;
     }
 }
@@ -87,7 +95,6 @@
 
 .username-link {
     color: #000;
-    color: none;
     text-decoration: none;
     cursor: pointer;
 
@@ -100,7 +107,7 @@
 
     .hash-link,
     .user-link {
-        color: #63e2b7;
+        color: var(--accent-color);
     }
 
     .following-link,

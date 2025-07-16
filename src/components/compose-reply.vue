@@ -29,12 +29,24 @@
                         <thumb-down-twotone v-if="hasThumbsDown" class="show" />
                     </n-icon>
                 </div>
-                <span class="show reply-btn" v-if="store.state.userLogined && !showReply" @click="switchReply(true)">
+                <n-button
+                    v-if="store.state.userLogined && !showReply"
+                    @click="switchReply(true)"
+                    type="primary"
+                    text
+                    size="small"
+                >
                     回复
-                </span>
-                <span class="hide reply-btn" v-if="store.state.userLogined && showReply" @click="switchReply(false)">
+                </n-button>
+                <n-button
+                    v-if="store.state.userLogined && showReply"
+                    @click="switchReply(false)"
+                    type="primary"
+                    text
+                    size="small"
+                >
                     取消
-                </span>
+                </n-button>
             </div>
         </div>
 
@@ -209,17 +221,7 @@ defineExpose({ switchReply });
             margin-left: 18px;
         }
 
-        .show {
-            color: #18a058;
-            cursor: pointer;
-            opacity: 0.75;
-           
-        }
 
-        .hide {
-            opacity: 0.75;
-            cursor: pointer;
-        }
     }
 }
 

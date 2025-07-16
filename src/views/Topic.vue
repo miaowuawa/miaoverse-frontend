@@ -76,8 +76,9 @@ const loadTags = () => {
     })
     .catch((err) => {
       tags.value = [];
-      console.log(err);
       loading.value = false;
+      console.error('获取话题列表失败:', err);
+      window.$message.error('获取话题列表失败');
     });
 };
 const changeTab = (tab: 'hot' | 'new' | 'follow' | 'pin') => {

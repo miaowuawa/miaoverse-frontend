@@ -169,7 +169,6 @@
                                     class="text-statistic"
                                     type="circle"
                                     :show-indicator="false"
-                                    status="success"
                                     :stroke-width="10"
                                     :percentage="(content.length / store.state.profile.defaultTweetMaxLength) * 100"
                                 />

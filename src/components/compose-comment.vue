@@ -100,7 +100,7 @@
                         <n-button
                             quaternary
                             round
-                            type="tertiary"
+                            type="primary"
                             class="cancel-btn"
                             size="small"
                             @click="cancelComment"

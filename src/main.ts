@@ -9,6 +9,8 @@ import type { MessageApiInjection } from 'naive-ui/lib/message/src/MessageProvid
 import 'vfonts/Lato.css';
 // 等宽字体
 import 'vfonts/FiraCode.css';
+// 自定义样式变量
+import '@/assets/styles/variables.less';
 
 createApp(App).use(router).use(store).mount('#app');
 
