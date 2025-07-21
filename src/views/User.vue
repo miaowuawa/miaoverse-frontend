@@ -27,6 +27,7 @@
                                 管理员
                             </n-tag>
                         </div>
+<!--                      TODO：经验对接-->
                         <div class="userinfo">
                             <span class="info-item">UID. {{ user.id }} </span>
                             <span class="info-item">{{ formatDate(user.created_on) }}&nbsp;加入</span>
@@ -70,7 +71,14 @@
                         </div>
                     </div>
 
+
                     <div class="user-opts" v-if="store.state.userInfo.id > 0">
+                      <FollowButton
+                          :user=user
+                          @update:follow="(status: boolean) => user.is_following = status"
+                          @follow-change="loadUser()"
+                      />
+                      <div class="user-buttons-group">
                         <n-dropdown placement="bottom-end" trigger="click" size="small" :options="userOptions"
                             @select="handleUserAction">
                             <n-button quaternary circle>
@@ -81,6 +89,8 @@
                                 </template>
                             </n-button>
                         </n-dropdown>
+<!--                        TODO:举报按钮-->
+                        </div>
                     </div>
                 </div>
 
@@ -90,7 +100,7 @@
                 <whisper-add-friend :show="showAddFriendWhisper" :user="user" @success="addFriendWhisperSuccess" />
             
                 <n-tabs v-if="!userLoading" class="profile-tabs-wrap" type="line" animated :value="pageType" @update:value="changeTab">
-                    <n-tab-pane name="post" tab="泡泡"></n-tab-pane>
+                    <n-tab-pane name="post" tab="动态"></n-tab-pane>
                     <n-tab-pane name="comment" tab="评论"></n-tab-pane>
                     <n-tab-pane name="highlight" tab="亮点"></n-tab-pane>
                     <n-tab-pane name="media" tab="图文"></n-tab-pane>
@@ -202,11 +212,11 @@
         </n-list>
 
         <n-space v-if="totalPage > 0" justify="center">
-            <InfiniteLoading class="load-more" :slots="{ complete: '没有更多泡泡了', error: '加载出错' }" @infinite="nextPage()">
+            <InfiniteLoading class="load-more" :slots="{ complete: '没有更多动态了', error: '加载出错' }" @infinite="nextPage()">
                 <template #spinner>
                     <div class="load-more-wrap">
                         <n-spin :size="14" v-if="!noMore" />
-                        <span class="load-more-spinner">{{ noMore ? '没有更多泡泡了' : '加载更多' }}</span>
+                        <span class="load-more-spinner">{{ noMore ? '没有更多动态了' : '加载更多' }}</span>
                     </div>
                 </template>
             </InfiniteLoading>
@@ -243,6 +253,7 @@ import {
   WalkOutline,
 } from '@vicons/ionicons5';
 import InfiniteLoading from 'v3-infinite-loading';
+import FollowButton from "@/components/FollowButton.vue";
 
 const dialog = useDialog();
 const store = useStore();
@@ -335,14 +346,14 @@ const onHandleFollowAction = (post: Item.PostProps) => {
 };
 
 function postFollowAction(userId: number, isFollowing: boolean) {
-  updateFolloing(postList, userId, isFollowing);
-  updateFolloing(commentList, userId, isFollowing);
-  updateFolloing(highlightList, userId, isFollowing);
-  updateFolloing(mediaList, userId, isFollowing);
-  updateFolloing(starList, userId, isFollowing);
+  updateFollowing(postList, userId, isFollowing);
+  updateFollowing(commentList, userId, isFollowing);
+  updateFollowing(highlightList, userId, isFollowing);
+  updateFollowing(mediaList, userId, isFollowing);
+  updateFollowing(starList, userId, isFollowing);
 }
 
-function updateFolloing(
+function updateFollowing(
   posts: Ref<Item.PostProps[]>,
   userId: number,
   isFollowing: boolean,
@@ -692,19 +703,19 @@ const userOptions = computed(() => {
       });
     }
   }
-  if (user.is_following) {
-    options.push({
-      label: '取消关注',
-      key: 'unfollow',
-      icon: renderIcon(WalkOutline),
-    });
-  } else {
-    options.push({
-      label: '关注',
-      key: 'follow',
-      icon: renderIcon(BodyOutline),
-    });
-  }
+  // if (user.is_following) {
+  //   options.push({
+  //     label: '取消关注',
+  //     key: 'unfollow',
+  //     icon: renderIcon(WalkOutline),
+  //   });
+  // } else {
+  //   options.push({
+  //     label: '关注',
+  //     key: 'follow',
+  //     icon: renderIcon(BodyOutline),
+  //   });
+  // }
   if (store.state.profile.useFriendship) {
     if (user.is_friend) {
       options.push({

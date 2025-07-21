@@ -14,7 +14,7 @@ const routes = [
     path: '/post',
     name: 'post',
     meta: {
-      title: '泡泡详情',
+      title: '动态详情',
     },
     component: () => import('@/views/Post.vue'),
   },

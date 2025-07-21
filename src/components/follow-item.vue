@@ -19,11 +19,12 @@
                 </span>
                  <span class="username-wrap"> @{{ contact.username }} </span>
                  <span class="username-wrap">
-                          <n-tag type="success">
-                              Lv.XXX
+                          <n-tag type="success" size="small" class="top-tag">
+                              Lv.{{ contact.level || 1 }}
                           </n-tag>
                     </span>
-<!--              TODO:完成经验显示-->
+                    <!-- 调试信息: {{ JSON.stringify(contact) }} -->
+                    <!-- TODO:完成经验显示对接 -->
                 <n-tag
                     v-if="contact.is_following"
                     class="top-tag" type="success" size="small" round>

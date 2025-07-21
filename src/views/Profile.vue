@@ -20,11 +20,13 @@
                         <n-tag v-if="store.state.userInfo.is_admin" class="top-tag" type="error" size="small" round>
                             管理员
                         </n-tag>
-                      <n-tag type="success">
-                        Lv.x
+                      <n-tag type="success" size="small" style="margin-left: 8px;">
+                        Lv.{{ 1 }}
                       </n-tag>
 <!--                      TODO:完成经验显示-->
                     </div>
+
+
                     <div class="userinfo">
                         <span class="info-item">UID. {{ store.state.userInfo.id }} </span>
                         <span class="info-item">{{ formatDate(store.state.userInfo.created_on) }}&nbsp;加入</span>
@@ -220,6 +222,7 @@ import { prettyQuoteNum } from '@/utils/count';
 import InfiniteLoading from 'v3-infinite-loading';
 import { SettingsOutline } from '@vicons/ionicons5';
 import { MoreHorizFilled } from '@vicons/material';
+import FollowButton from "@/components/FollowButton.vue";
 
 const store = useStore();
 const route = useRoute();

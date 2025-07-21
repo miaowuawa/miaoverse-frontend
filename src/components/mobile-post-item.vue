@@ -18,6 +18,11 @@
                         </router-link>
                     </span>
                     <span class="username-wrap"> @{{ post.user.username }} </span>
+                    <span class="username-wrap">
+                        <n-tag type="success" size="small" class="top-tag">
+                            Lv.{{ post.user.level || 1 }}
+                        </n-tag>
+                    </span>
                     <n-tag
                         v-if="post.is_top"
                         class="top-tag"

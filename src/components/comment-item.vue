@@ -20,6 +20,11 @@
                 <span class="username-wrap">
                     @{{ comment.user.username }}
                 </span>
+                <span class="username-wrap">
+                    <n-tag type="success" class="top-tag" size="small">
+                        Lv.{{ comment.user.level || 1 }}
+                    </n-tag>
+                </span>
                 <n-tag
                     v-if="comment.is_essence == YesNoEnum.YES"
                     class="top-tag"

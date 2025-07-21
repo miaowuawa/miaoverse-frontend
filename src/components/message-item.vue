@@ -25,6 +25,11 @@
                         <span v-if="store.state.desktopModelShow" class="username">
                             @{{ message.sender_user.username }}
                         </span>
+                        <span class="username">
+                            <n-tag type="success" size="small" class="top-tag">
+                                Lv.{{ message.sender_user.level || 1 }}
+                            </n-tag>
+                        </span>
                     </span>
                     <span class="nickname" v-else-if="isWhisperSender">
                         <router-link @click.stop class="username-link" :to="{
@@ -37,6 +42,11 @@
                         </router-link>
                         <span v-if="store.state.desktopModelShow" class="username">
                             @{{ message.receiver_user.username }}
+                        </span>
+                        <span class="username">
+                            <n-tag type="success" size="small" style="margin-left: 8px; background-color: #18a058; color: white;">
+                                Lv.{{ message.receiver_user.level || 1 }}
+                            </n-tag>
                         </span>
                     </span>
                     <span class="nickname" v-else> 系统 </span>

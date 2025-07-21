@@ -1,8 +1,24 @@
 <template>
     <div>
         <main-nav :title="title" />
+      <div v-if="!store.state.userInfo.phone?.length">
+        <n-alert title="手机绑定提示" type="warning">
+          成功绑定手机后，才能进行换头像、发动态、回复等交互~
+          <br><br>
+          <n-button
+              @click="$router.push('/setting')"
+              type="primary"
+              secondary
+              size="small"
+              color="#8a2be2"
+              round
+          >
+            前往绑定
+          </n-button>
+        </n-alert>
+      </div>
 
-        <n-list class="main-content-wrap" bordered>
+      <n-list class="main-content-wrap" bordered>
             <n-list-item>
                 <!-- 发布器 -->
                 <compose @post-success="onPostSuccess" />
@@ -87,11 +103,11 @@
         </n-list>
 
         <n-space v-if="totalPage > 0" justify="center">
-            <InfiniteLoading class="load-more" :slots="{ complete: '没有更多泡泡了', error: '加载出错' }" @infinite="nextPage()">
+            <InfiniteLoading class="load-more" :slots="{ complete: '没有更多动态了', error: '加载出错' }" @infinite="nextPage()">
                 <template #spinner>
                     <div class="load-more-wrap">
                         <n-spin :size="14" v-if="!noMore" />
-                        <span class="load-more-spinner">{{ noMore ? '没有更多泡泡了' : '加载更多' }}</span>
+                        <span class="load-more-spinner">{{ noMore ? '没有更多动态了' : '加载更多' }}</span>
                     </div>
                 </template>
             </InfiniteLoading>
@@ -181,7 +197,7 @@ const user = reactive<Item.UserInfo>({
 });
 const inActionPost = ref<Item.PostProps | null>(null);
 
-const title = ref<string>('泡泡广场');
+const title = ref<string>('喵星广场');
 const loading = ref(false);
 const noMore = ref(false);
 const targetStyle = ref<number>(1);
@@ -301,7 +317,7 @@ function postFollowAction(userId: number, isFollowing: boolean) {
 }
 
 const updateTitle = () => {
-  title.value = '泡泡广场';
+  title.value = '喵星广场';
   if (route.query && route.query.q) {
     if (route.query.t && route.query.t === 'tag') {
       title.value = '#' + decodeURIComponent(route.query.q as string);
