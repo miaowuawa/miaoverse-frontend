@@ -1,7 +1,7 @@
 <template>
     <div>
         <main-nav :title="title" />
-      <div v-if="!store.state.userInfo.phone?.length">
+      <div v-if="!store.state.userInfo.phone?.length && store.state.userInfo.id > 0">
         <n-alert title="手机绑定提示" type="warning">
           成功绑定手机后，才能进行换头像、发动态、回复等交互~
           <br><br>
@@ -21,7 +21,7 @@
       <n-list class="main-content-wrap" bordered>
             <n-list-item>
                 <!-- 发布器 -->
-                <compose @post-success="onPostSuccess" />
+                <compose @post-success="onPostSuccess" v-if="store.state.userInfo.phone?.length"/>
             </n-list-item>
 
             <n-list-item v-if="showTrendsBar" >
